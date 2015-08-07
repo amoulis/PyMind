@@ -10,6 +10,7 @@ PyMind works with was developped and tested with Python3.4
 import sys
 import os
 import random
+import compare
 
 # clear console
 clear = lambda: os.system('cls')
@@ -23,15 +24,22 @@ nbTrials = 10
 
 # generate random combinaison
 random.seed();
-list = []
+listF = []
 for x in range(0, 4):
-	list.append(random.randint(1,7))
+	listF.append(random.randint(1,7))
 #print(list)
 
 # start loop
 while(nbTrials > 0):
-	print("in loop")
-
-# analyze player's n-th guess
-
-# assert results (number of color well placed, misplaced)
+	# get user input
+	guess = input("Enter your sequence of 4 numbers. Life : " + str(nbTrials) + " \n >> ")
+	# convert entry into array of integers
+	print(guess)
+	guess = guess.split()
+	guess_int = []
+	for x in guess:
+		guess_int.append(int(x))
+	#print(guess_int)
+	res = compare.compare(guess_int, listF)
+	if res == -1:
+		nbTrials = nbTrials - 1
