@@ -27,7 +27,7 @@ random.seed();
 listF = []
 for x in range(0, 4):
 	listF.append(random.randint(1,7))
-#print(list)
+#print(listF)
 
 # start loop
 while(nbTrials > 0):
@@ -41,5 +41,10 @@ while(nbTrials > 0):
 		guess_int.append(int(x))
 	#print(guess_int)
 	res = compare.compare(guess_int, listF)
-	if res == -1:
+	print(res)
+	if res == 1:
+		print("End of Game")
+		break
+	else:
+		print("good color : [" + str(res[0]) + "] good order : [" + str(res[1]) + "]")
 		nbTrials = nbTrials - 1
